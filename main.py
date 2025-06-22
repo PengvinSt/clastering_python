@@ -31,8 +31,8 @@ def main(args):
 
     logger.info(f"Clustering Parameters:")
     logger.info(f"  Method: {args.method}")
-    logger.info(f"  Epsilon (eps_value): {args.eps_value}")
-    logger.info(f"  Min Points (min_pts_value): {args.min_pts_value}")
+    logger.info(f"  Epsilon (eps_value): {args.eps}")
+    logger.info(f"  Min Points (min_pts_value): {args.min_pts}")
     logger.info("------------------------------------")
 
     logger.info("--- Starting Histogram Extraction ---")
@@ -63,8 +63,8 @@ def main(args):
             file_names=file_names,
             histograms=scaled_histograms,
             logger=logger,
-            eps_value=args.eps_value,
-            min_pts_value=args.min_pts_value,
+            eps_value=args.eps,
+            min_pts_value=args.min_pts,
             clustering_type=args.method
         )
 
@@ -83,8 +83,8 @@ if __name__ == '__main__':
     #Clusterizer
     parser.add_argument('--method', type=str, default='DBSCAN', choices=['DBSCAN', 'DBCLASD'],
                         help='Clustering method to use.')
-    parser.add_argument('--eps_value', type=float, default=25.0, help='Epsilon parameter for clustering. Needs tuning. Default: 25.0')
-    parser.add_argument('--min_pts_value', type=int, default=2, help='Minimum samples parameter for clustering.')
+    parser.add_argument('--eps', type=float, default=25.0, help='Epsilon parameter for clustering. Needs tuning. Default: 25.0')
+    parser.add_argument('--min_pts', type=int, default=2, help='Minimum samples parameter for clustering.')
 
     args = parser.parse_args()
     main(args)
